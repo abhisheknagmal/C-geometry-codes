@@ -1,0 +1,84 @@
+#include<iostream>
+#include<conio.h>
+#include<math.h>
+using namespace std;
+int main()
+{
+	
+	double x[2],y[2],m,x1,y1,i,r,X1,Y1,X2,Y2,a,b,c,sq;
+	
+	cout<<"enter coordinates of  point 1 of line 1: ";
+	cin>>x[0]>>y[0];
+	cout<<"enter coordinates of  point 2 of line 1: ";
+	cin>>x[1]>>y[1];
+	cout<<"\nenter coordinates of center of circle and radius: ";
+    cin>>x1>>y1>>r;
+    
+    if(y[0]==y[1])
+    {
+    	
+    	a=1;
+    	b=-2*x1;
+    	c=(x1*x1)+(y[0]-y1)*(y[0]-y1)-r*r;
+    	
+    sq=sqrt(b*b-4*a*c);
+    X1=(-b+sq)/(2*a);
+    X2=(-b-sq)/(2*a);
+    Y1=y[0];
+    Y2=y[0];
+    if(X1==X2 && Y1==Y2)
+    {
+    	cout<<"Intersection at point x= "<<X1<<"\ty= "<<Y1;
+	}
+    else
+    {
+    cout<<"Intersection at point x1= "<<X1<<"\ty1= "<<Y1;
+    cout<<"\nIntersection at point x2= "<<X2<<"\ty2= "<<Y2;
+}
+    	
+}
+   if(x[0]==x[1])
+    {
+    	
+    	a=1;
+    	b=-2*y1;
+    	c=(y1*y1)+(x[0]-x1)*(x[0]-x1)-r*r;
+    	
+    sq=sqrt(b*b-4*a*c);
+    Y1=(-b+sq)/(2*a);
+    Y2=(-b-sq)/(2*a);
+    X1=x[0];
+    X2=x[0];
+    if(X1==X2 && Y1==Y2)
+    {
+    	cout<<"Intersection at point x= "<<X1<<"\ty= "<<Y1;
+	}
+    else
+    {
+    cout<<"Intersection at point x1= "<<X1<<"\ty1= "<<Y1;
+    cout<<"\nIntersection at point x2 = "<<X2<<"\ty2= "<<Y2;
+}
+    
+}
+    
+    if(x[0]!=x[1] && y[0]!=y[1])
+    {
+	
+	m=(y[1]-y[0])/(x[1]-x[0]);
+    i=y[0]-m*x[0];
+    
+    a=(m*m+1);
+    b=-(2*x1+2*m*y1)+2*m*i;
+    c=x1*x1+y1*y1-2*i*y1-r*r+i*i;
+    
+    sq=sqrt(b*b-4*a*c);
+    X1=(-b+sq)/(2*a);
+    X2=(-b-sq)/(2*a);
+    Y1=m*X1+i;
+    Y2=m*X2+i;
+    
+    cout<<"\nIntersection at point x1= "<<X1<<"\ty1= "<<Y1;
+    cout<<"\nIntersection at point x2= "<<X2<<"\ty2= "<<Y2;
+}
+
+}
