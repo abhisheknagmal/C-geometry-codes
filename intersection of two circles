@@ -1,0 +1,154 @@
+#include<iostream>
+#include<conio.h>
+#include<math.h>
+using namespace std;
+void twoint(double p,double q,double r,double s,double t,double u);
+int main()
+{
+	
+	double x[2],y[2],r1,r2,dx,dy,d,ang,X,Y,x1,y1,ni;
+	
+	cout<<"enter x and y coordinate of circle 1 & radius of circle 1 : \t";
+	cin>>x[0]>>y[0]>>r1;
+	
+	cout<<"enter x and y coordinate of circle 2 & radius of circle 2 : \t";
+	cin>>x[1]>>y[1]>>r2;
+	
+	dx=x[0]-x[1];
+	if(dx<0)
+	{dx*=-1; }
+	
+    dy=y[0]-y[1];
+	if(dy<0)
+	{ dy*=-1;}
+	
+	d=hypot(dx,dy);
+	ni=r1-r2;
+	if(ni<0)
+	{
+		ni*=-1;
+	}
+	
+	if(d>(r1+r2) || d<(ni))     
+	{
+		cout<<"No Intersection...";
+	}
+	
+	if( r1==r2 && x[0]==x[1] && y[0]==y[1])
+	{
+		cout<<"\ncircles are Overlapping";
+	}
+	
+	if(d==(r1+r2)){
+	 if(y[0]!=y[1] && x[0]!=x[1]) 
+	
+	{
+	
+		ang=atan(dy/dx); // tan inverse value in radian
+		ang*=(180*7/22);
+		//cout<<ang;    // angle converted in degrees                 
+		if(y[1]>y[0] && x[1]>x[0])
+		{
+			X=cos(ang)*r1;
+			cout<<X;
+			Y=sin(ang)*r1;
+			cout<<Y;
+			x1=x[0]+X;
+			y1=y[0]+Y;
+		}
+		if(y[0]>y[1] && x[1]>x[0])
+		{
+			X=cos(ang)*r2;
+			Y=sin(ang)*r2;
+			x1=x[1]-X;
+			y1=y[1]+Y;
+		}
+		if(y[0]>y[1] && x[0]>x[1])
+		{
+			X=cos(ang)*r2;
+			Y=sin(ang)*r2;
+			x1=x[1]+X;
+			y1=y[1]+Y;
+		}
+		if(y[1]>y[0] && x[0]>x[1])
+		{
+			X=cos(ang)*r2;
+			Y=sin(ang)*r2;
+			x1=x[0]-X;
+			y1=y[0]+Y;
+		}
+		
+	cout<<"Coordinates of intersection point: \t\tx= "<<x1<<"\t\ty= "<<y1;
+	}
+	 	
+}
+	
+	if(y[0]==y[1])
+	{
+		
+		if(dx==(r1+r2))
+		{
+			if(x[0]>x[1])
+			{
+				x1=x[0]-r1;
+			}else
+			{
+				x1=x[1]-r2;
+				
+			}
+			cout<<"\none intersection point at x= "<<x1<<",y= "<<y[1];
+		}
+		
+	}
+		if(x[0]==x[1])
+	{
+		if(dy==(r1+r2))
+		{
+			if(y[0]>y[1])
+			{
+				y1=y[0]-r1;
+			}else
+			{
+				y1=y[1]-r2;
+			}
+			cout<<"\none intersection point at x= "<<x[1]<<",y= "<<y1;
+		}
+	
+	}
+	
+	
+	if(ni<d && d<(r1+r2))
+	{
+		cout<<"\ntwo intersection points will occur: \n";
+		twoint(x[0],y[0],r1,x[1],y[1],r2);
+	}
+
+	
+	
+}
+
+
+ void twoint(double p,double q,double r,double s,double t,double u)
+
+{
+		float e,b,a,c,de,p1y1,p2y2,p1x1,p2x2,x1;
+	
+s-=p;
+t-=q;
+e=r*r-u*u+s*s+t*t;	
+a=pow((-2*s),2)+pow(-2*t,2);
+b=-(2*e*2*t);
+c=e*e-((r*r)*pow((-2*s),2));
+ 
+ de=sqrt(b*b-4*a*c);
+ 
+ p1y1=(-b+de)/(2*a);
+ p2y2=(-b-de)/(2*a);
+ 
+ p1x1=(-e+2*t*p1y1)/(-2*s);
+ p2x2=(-e+2*t*p2y2)/(-2*s);
+ 
+ cout<<"\n\n(p1x1,p1y1)=("<<p1x1+p<<", "<<p1y1+q<<")";
+ cout<<"\n\n(p2x2,p2y2)=("<<p2x2+p<<", "<<p2y2+q<<")";
+ 
+}
